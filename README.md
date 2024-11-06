@@ -40,7 +40,28 @@ MATCH (director:Person {name: "Rob Reiner"})-[:DIRECTED]->(movie)
 RETURN movie.title AS Movie
 **Purpose**: This query returns all movies directed by Rob Reiner, which is useful for understanding a director's influence in the dataset.
 
+### 2. List All Co-actors of a Specific Actor
+```cypher
+MATCH (actor:Person {name: "Tom Hanks"})-[:ACTED_IN]->()<-[:ACTED_IN]-(coActor)
+RETURN DISTINCT coActor.name AS CoActor
+**Purpose**: This query finds actors who have acted alongside Tom Hanks, revealing collaboration patterns.
 
+### 3. Find Movies and Actors Exactly 3 "Hops" Away from the Movie “Hoffa”
+```cypher
+MATCH (movie:Movie {title: "Hoffa"})-[*3]-(connectedNode)
+WHERE NOT (movie)-[*1..2]-(connectedNode)
+RETURN connectedNode
+**Purpose**: This query identifies all nodes exactly three relationships away from "Hoffa," filtering out closer connections. This could highlight less obvious relationships within the network.
+
+### 4. Find Actors Who Have Collaborated on More Than 3 Movies
+```cypher
+MATCH (a1:Person)-[:ACTED_IN]->(movie)<-[:ACTED_IN]-(a2:Person)
+WHERE a1 <> a2
+WITH a1, a2, COUNT(movie) AS collaborations
+WHERE collaborations > 3
+RETURN a1.name AS Actor1, a2.name AS Actor2, collaborations
+ORDER BY collaborations DESC
+**Purpose**: This query finds frequent collaborators, which could be useful for casting directors or analysts studying actor partnerships.
 
 
 
