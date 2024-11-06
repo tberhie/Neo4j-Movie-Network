@@ -1,5 +1,3 @@
-# Neo4j-Movie-Network
-
 # Movie Graph Database with Neo4j
 
 ## Project Overview
