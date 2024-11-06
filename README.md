@@ -66,6 +66,12 @@ ORDER BY collaborations DESC
 ```
 **Purpose**: This query finds frequent collaborators, which could be useful for casting directors or analysts studying actor partnerships.
 
+## Visualization Examples
+
+<img width="851" alt="Screenshot 2024-11-06 at 11 38 26 AM" src="https://github.com/user-attachments/assets/4db93813-179d-418b-84d9-1b6bde87feab">
+
+<img width="1028" alt="Screenshot 2024-11-06 at 11 23 22 AM" src="https://github.com/user-attachments/assets/f39d2502-d92b-46a0-9d7c-e54e8d3c56dc">
+
 
 
 
